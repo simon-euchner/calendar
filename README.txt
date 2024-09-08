@@ -60,7 +60,7 @@ Contents.
         dtiw.c/.h     : Draw text input window
 
 
-Public branches.
+Branches.
 
     main: On this branch I keep the finished program with possible
           changes not included in the current released version. You
@@ -71,6 +71,10 @@ Public branches.
              and usable; this is probably what you want. After a few changes
              to *main* have been made, I will merge it into this branch and
              create a new release.
+
+    dev: Here I work on the calendar. Usage of *dev* is just to stay with
+         common practice, I obviously do not consider writing a calendar actual
+         development. 
 
 
 Installation instructions.
