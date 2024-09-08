@@ -108,7 +108,7 @@ const char *month_labels[MPY]                             = { "Januar",
                                                               "Dezember"   };
 
 /* Absolute path to directory *data.d*; IMPORTANT: KEEP / CHARACTER AT END    */
-const char *abspath_to_datd = "/home/simon/Files/calendar.d/dat.d/"            ;
+const char *abspath_to_datd = "./dat.d/"                                       ;
 
 /* --- Change things here only if you know what you are doing --------------- */
 
