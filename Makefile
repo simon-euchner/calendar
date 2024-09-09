@@ -19,7 +19,7 @@
 
 ### Variables
 
-# Compiler and Linker {GNU C compiler/linker}
+# Compiler and Linker (GNU C compiler/linker)
 CC = gcc
 LD = gcc
 FLAGS = -Wall -Wextra -std=c99
