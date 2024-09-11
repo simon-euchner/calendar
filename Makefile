@@ -19,7 +19,7 @@
 
 ### Variables
 
-# Compiler and Linker {GNU C compiler/linker}
+# Compiler and Linker (GNU C compiler/linker)
 CC = gcc
 LD = gcc
 FLAGS = -Wall -Wextra -std=c99
@@ -34,7 +34,7 @@ BIN = ./bin.d
 CFLAGS = `pkg-config --cflags gtk4`
 LIB = `pkg-config --libs gtk4`
 
-# Target {binary *calendar*}
+# Target (binary *calendar*)
 TARGET = ${BIN}/calendar
 
 # Define file names
