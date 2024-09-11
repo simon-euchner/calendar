@@ -34,7 +34,7 @@ BIN = ./bin.d
 CFLAGS = `pkg-config --cflags gtk4`
 LIB = `pkg-config --libs gtk4`
 
-# Target {binary *calendar*}
+# Target (binary *calendar*)
 TARGET = ${BIN}/calendar
 
 # Define file names
