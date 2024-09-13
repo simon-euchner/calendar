@@ -45,6 +45,7 @@ void create_calendar_layout(int **,
                             GtkWidget *,
                             GtkWidget *,
                             GtkWidget **,
-                            GtkWidget **);
+                            GtkWidget **,
+                            GtkWidget *);
 
 #endif
