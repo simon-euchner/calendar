@@ -194,7 +194,8 @@ static void activate(GtkApplication *calendar, gpointer data) {
                            calendar_vsep_b,
                            calendar_vsep_c,
                            calendar_month_name_frames,
-                           calendar_day_buttons);
+                           calendar_day_buttons,
+                           calendar_note_button);
 
     /* Connect signals and define callback functions                          */
     define_handlers_connect_signals(abspath_to_year_file,
