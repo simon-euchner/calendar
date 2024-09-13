@@ -110,6 +110,7 @@ static void activate(GtkApplication *calendar, gpointer data) {
     GtkWidget *calendar_vsep_a, *calendar_vsep_b, *calendar_vsep_c;
     GtkWidget *calendar_month_name_frames[MPY];
     GtkWidget *calendar_day_buttons[MPY*BPM];
+    GtkWidget *calendar_note_button;
 
     calendar_window           = gtk_application_window_new(calendar);
     calendar_vbox             = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
@@ -138,6 +139,7 @@ static void activate(GtkApplication *calendar, gpointer data) {
         calendar_month_name_frames[i] = gtk_frame_new(month_labels[i]);
     for (int i=0; i<MPY*BPM; i++)
         calendar_day_buttons[i] = gtk_button_new_with_label(NULL);
+    calendar_note_button = gtk_button_new_with_label(NULL);
     /* ---------------------------------------------------------------------- */
 
     /* Initialize and set properties of defined widgets                       */
@@ -162,7 +164,8 @@ static void activate(GtkApplication *calendar, gpointer data) {
                calendar_vsep_b,
                calendar_vsep_c,
                calendar_month_name_frames,
-               calendar_day_buttons);
+               calendar_day_buttons,
+               calendar_note_button);
 
     /* Create header for calendar window                                      */
     create_calendar_header(&year,
