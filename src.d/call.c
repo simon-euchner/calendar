@@ -41,7 +41,8 @@ void create_calendar_layout(int **calendar_data,
                             GtkWidget *calendar_vsep_b,
                             GtkWidget *calendar_vsep_c,
                             GtkWidget **calendar_month_name_frames,
-                            GtkWidget **calendar_day_buttons) {
+                            GtkWidget **calendar_day_buttons,
+                            GtkWidget *calendar_note_button) {
 
     /* Integers for looping                                                   */
     int i, i0, j, j0, k, l, m, n;
@@ -63,6 +64,14 @@ void create_calendar_layout(int **calendar_data,
                         i, -2,
                         1, 1);
     }
+
+    /* Place button to open notes on grid: < = -2                             */
+    gtk_grid_attach(GTK_GRID(calendar_grid),
+                    calendar_note_button,
+                    BPR+1, -2,
+                    3, 1);
+    gtk_button_set_label(GTK_BUTTON(calendar_note_button),
+                         calendar_note_button_label);
 
     /* Place buttons to change year on grid: y = -2                           */
     gtk_grid_attach(GTK_GRID(calendar_grid),
