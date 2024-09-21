@@ -417,6 +417,60 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
     SharedData *shared_data = (SharedData *)g_data;
     GtkTextIter start, end;
     char *buffer;
-    printf("%s\n", "hello, world!");
 
+    /* --- Define widgets for notes window and initialize them -------------- */
+    GtkWidget *notes_window;
+    GtkWidget *notes_vbox, *notes_hbox;
+    GtkWidget *notes_header_label, *notes_quit_button, *notes_header;
+    GtkWidget *notes_margin_left, *notes_margin_right;
+    GtkWidget *notes_margin_top, *notes_margin_bottom;
+    GtkTextBuffer *notes_buffer;
+    GtkWidget *notes_notepad;
+
+    notes_window          = gtk_window_new();
+    notes_vbox            = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+    notes_hbox            = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+    notes_header_label    = gtk_label_new(NULL);
+    notes_quit_button     = gtk_button_new_with_label("X");
+    notes_header          = gtk_frame_new(NULL);
+    notes_margin_left     = gtk_frame_new(NULL);
+    notes_margin_right    = gtk_frame_new(NULL);
+    notes_margin_top      = gtk_frame_new(NULL);
+    notes_margin_bottom   = gtk_frame_new(NULL);
+    notes_buffer          = gtk_text_buffer_new(NULL);
+    notes_notepad         = gtk_text_view_new_with_buffer(notes_buffer);
+
+    /* Reuse function from text input window to initialize widgets            */
+    tiw_widgets_initialize(notes_window,
+                           notes_header_label,
+                           notes_quit_button,
+                           notes_header,
+                           notes_margin_left,
+                           notes_margin_right,
+                           notes_margin_top,
+                           notes_margin_bottom,
+                           notes_notepad);
+    /* ---------------------------------------------------------------------- */
+
+    /* Draw window to input notes                                             */
+    create_window_for_notes(shared_data->abspath_to_notes_file,
+                            notes_vbox,
+                            notes_hbox,
+                            notes_header_label,
+                            notes_quit_button,
+                            notes_header,
+                            notes_margin_left,
+                            notes_margin_right,
+                            notes_margin_top,
+                            notes_margin_bottom,
+                            notes_buffer,
+                            notes_notepad);
+
+    /* Present text input window *notes_window* with title for window manager */
+    gtk_window_set_modal(GTK_WINDOW(notes_window), TRUE); /* Disable          *
+                                                           * interaction with *
+                                                           * parent window    */
+    gtk_window_set_title(GTK_WINDOW(notes_window), name_for_window_manager);
+    gtk_window_set_child(GTK_WINDOW(notes_window), notes_vbox);
+    gtk_window_present(GTK_WINDOW(notes_window));
 }
