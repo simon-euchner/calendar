@@ -85,7 +85,7 @@ static void get_css_string(char *buffer) {
                     "    border-width: 1px;"
                     "    border-color: %s;"
                     "}"
-                    "#calendar_note_button {"
+                    "#calendar_notes_button {"
                     "    background: %s;"
                     "    color: %s;"
                     "    font-family: Monospace;"
@@ -97,10 +97,10 @@ static void get_css_string(char *buffer) {
                     "    margin: 0px;"
                     "    padding: 0px;"
                     "}"
-                    "#calendar_note_button:hover {"
+                    "#calendar_notes_button:hover {"
                     "    background: %s;"
                     "}"
-                    "#calendar_note_button:active {"
+                    "#calendar_notes_button:active {"
                     "    background: %s;"
                     "}"
                     "#calendar_year_button {"
@@ -214,13 +214,13 @@ static void get_css_string(char *buffer) {
                             calendar_window_font_color,
                             calendar_calendar_font_size,
                             calendar_window_bg_color,
-                            /* calendar_note_button                           */
-                            calendar_note_button_bg_color,
+                            /* calendar_notes_button                          */
+                            calendar_notes_button_bg_color,
                             calendar_window_font_color,
                             calendar_calendar_font_size,
                             calendar_window_bg_color,
-                            calendar_note_button_bg_color_hover,
-                            calendar_note_button_bg_color_active,
+                            calendar_notes_button_bg_color_hover,
+                            calendar_notes_button_bg_color_active,
                             /* calendar_year_button                           */
                             calendar_year_button_bg_color,
                             calendar_window_font_color,

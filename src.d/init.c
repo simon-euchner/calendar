@@ -44,7 +44,7 @@ void initialize(int **calendar_data,
                 GtkWidget *calendar_vsep_c,
                 GtkWidget **calendar_month_name_frames,
                 GtkWidget **calendar_day_buttons,
-                GtkWidget *calendar_note_button) {
+                GtkWidget *calendar_notes_button) {
 
     gtk_widget_set_name(calendar_window, "calendar_window");
     gtk_window_set_resizable(GTK_WINDOW(calendar_window), FALSE);
@@ -131,7 +131,7 @@ void initialize(int **calendar_data,
                                     calendar_day_button_height);
     }
 
-    gtk_widget_set_name(calendar_note_button, "calendar_note_button");
+    gtk_widget_set_name(calendar_notes_button, "calendar_notes_button");
 
     load_css();
 }
