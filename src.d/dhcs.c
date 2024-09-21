@@ -29,6 +29,7 @@ static void open_text_input_window(GtkWidget *, gpointer);
 static void send_destroy_signal_to_window(GtkWidget *, gpointer);
 static void save_and_quit_tiw(GtkWidget *, gpointer);
 static void open_window_for_notes(GtkWidget *, gpointer);
+static void save_and_quit_notes(GtkWidget *widget, gpointer g_data);
 
 
 /* Connect signals                                                            *
@@ -415,8 +416,6 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
 
     (void)widget;
     SharedData *shared_data = (SharedData *)g_data;
-    GtkTextIter start, end;
-    char *buffer;
 
     /* --- Define widgets for notes window and initialize them -------------- */
     GtkWidget *notes_window;
@@ -466,6 +465,18 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
                             notes_buffer,
                             notes_notepad);
 
+    /* Connect signals                                                        */
+    shared_data->notes_window = notes_window;
+    shared_data->notes_buffer = notes_buffer;
+    g_signal_connect(notes_quit_button,
+                     "clicked",
+                     G_CALLBACK(send_destroy_signal_to_window),
+                     notes_window);
+    g_signal_connect(notes_window,
+                     "destroy",
+                     G_CALLBACK(save_and_quit_notes),
+                     shared_data);
+
     /* Present text input window *notes_window* with title for window manager */
     gtk_window_set_modal(GTK_WINDOW(notes_window), TRUE); /* Disable          *
                                                            * interaction with *
@@ -473,4 +484,32 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
     gtk_window_set_title(GTK_WINDOW(notes_window), name_for_window_manager);
     gtk_window_set_child(GTK_WINDOW(notes_window), notes_vbox);
     gtk_window_present(GTK_WINDOW(notes_window));
+}
+
+/* Callback: Save text to file and quit notes window                          */
+static void save_and_quit_notes(GtkWidget *widget, gpointer g_data) {
+
+    (void)widget;
+    SharedData *shared_data = (SharedData *)g_data;
+    GtkTextIter start, end;
+    char *buffer;
+
+    /* Get buffer contents                                                    */
+    gtk_text_buffer_get_start_iter(shared_data->notes_buffer, &start);
+    gtk_text_buffer_get_end_iter(shared_data->notes_buffer, &end);
+    buffer = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(
+                                          shared_data->notes_buffer),
+                                      &start,
+                                      &end,
+                                      FALSE);
+
+    /* Save buffer contents to file                                           */
+    FILE *file = fopen(shared_data->abspath_to_notes_file, "w");
+    fprintf(file, "%s", buffer);
+    free(buffer); /* Data is owned by caller and thus must be freed manually  */
+    fclose(file);
+
+    /* Decrease reference counts/clean up                                     */
+    g_object_unref(shared_data->notes_buffer);
+    gtk_window_destroy(GTK_WINDOW(shared_data->notes_window));
 }
