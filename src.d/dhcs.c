@@ -28,6 +28,7 @@ static void change_year_worker(const char *, SharedData *);
 static void open_text_input_window(GtkWidget *, gpointer);
 static void send_destroy_signal_to_window(GtkWidget *, gpointer);
 static void save_and_quit_tiw(GtkWidget *, gpointer);
+static void open_window_for_notes(GtkWidget *, gpointer);
 
 
 /* Connect signals                                                            *
@@ -47,7 +48,8 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
                                      GtkWidget *calendar_prev_year_button,
                                      GtkWidget *calendar_next_year_button,
                                      GtkWidget **calendar_day_buttons,
-                                     GtkWidget *calendar_note_button) {
+                                     char *abspath_to_notes_file,
+                                     GtkWidget *calendar_notes_button) {
 
     /* Integers for looping                                                   */
     int i, j;
@@ -95,6 +97,12 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
     g_signal_connect(calendar_window,
                      "destroy",
                      G_CALLBACK(quit_calendar),
+                     shared_data);
+
+    /* calendar_notes_button: Open text window for notes                      */
+    g_signal_connect(calendar_notes_button,
+                     "clicked",
+                     G_CALLBACK(open_window_for_notes),
                      shared_data);
     /* ---------------------------------------------------------------------- */
 }
@@ -398,4 +406,14 @@ static void save_and_quit_tiw(GtkWidget *widget, gpointer g_data) {
     /* Decrease reference counts/clean up                                     */
     g_object_unref(shared_data->tiw_buffer);
     gtk_window_destroy(GTK_WINDOW(shared_data->tiw_window));
+}
+
+/* Callback: Open text input window for notes                                 */
+static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
+
+    (void)widget;
+    SharedData *shared_data = (SharedData *)g_data;
+    GtkTextIter start, end;
+    char *buffer;
+
 }

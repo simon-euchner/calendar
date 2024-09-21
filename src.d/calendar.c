@@ -93,6 +93,11 @@ static void activate(GtkApplication *calendar, gpointer data) {
                              mai, jun, jul, aug,
                              sep, oct, nov, dec  };
     get_days(calendar_data, year, inityear, first_days_inityear);
+
+    /* Define path to notes file                                              */
+    char *abspath_to_notes_file = (char *)malloc(len_of_path+9+1);
+    strcpy(abspath_to_notes_file, abspath_to_datd);
+    strcat(abspath_to_notes_file, "notes.txt");
     /* ---------------------------------------------------------------------- */
 
     /* --- Define widgets, initialize, set properties and load CSS ---------- */
@@ -209,6 +214,7 @@ static void activate(GtkApplication *calendar, gpointer data) {
                                     calendar_prev_year_button,
                                     calendar_next_year_button,
                                     calendar_day_buttons,
+                                    abspath_to_notes_file,
                                     calendar_notes_button);
 
     /* Present main window *calendar_window* with title for window manager    */

@@ -56,6 +56,7 @@ void define_handlers_connect_signals(char *,
                                      GtkWidget *,
                                      GtkWidget *,
                                      GtkWidget **,
+                                     char *,
                                      GtkWidget *);
 
 #endif
