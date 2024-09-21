@@ -42,6 +42,7 @@ typedef struct _SharedData {
     int tiw_pressed_day_index;
     char *abspath_to_dbtm_file;
     int *calendar_dbtm;
+    char *abspath_to_notes_file;
 } SharedData;
 
 void define_handlers_connect_signals(char *,
