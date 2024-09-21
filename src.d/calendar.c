@@ -208,7 +208,8 @@ static void activate(GtkApplication *calendar, gpointer data) {
                                     calendar_quit_button,
                                     calendar_prev_year_button,
                                     calendar_next_year_button,
-                                    calendar_day_buttons);
+                                    calendar_day_buttons,
+                                    calendar_note_button);
 
     /* Present main window *calendar_window* with title for window manager    */
     gtk_window_set_title(GTK_WINDOW(calendar_window), name_for_window_manager);
