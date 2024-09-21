@@ -65,6 +65,7 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
         shared_data->calendar_day_buttons[i] = calendar_day_buttons[i];
     shared_data->abspath_to_dbtm_file = abspath_to_dbtm_file;
     shared_data->calendar_dbtm = calendar_dbtm;
+    shared_data->abspath_to_notes_file = abspath_to_notes_file;
     /* ---------------------------------------------------------------------- */
 
     /* --- Connect signals -------------------------------------------------- */
@@ -146,6 +147,7 @@ static void quit_calendar(GtkWidget *widget, gpointer g_data) {
     free(shared_data->abspath_to_year_file);
     free(shared_data->abspath_to_dbtm_file);
     free(shared_data->calendar_dbtm);
+    free(shared_data->abspath_to_notes_file);
     free(shared_data);
 }
 
@@ -415,5 +417,6 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
     SharedData *shared_data = (SharedData *)g_data;
     GtkTextIter start, end;
     char *buffer;
+    printf("%s\n", "hello, world!");
 
 }
