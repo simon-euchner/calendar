@@ -46,7 +46,8 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
                                      GtkWidget *calendar_quit_button,
                                      GtkWidget *calendar_prev_year_button,
                                      GtkWidget *calendar_next_year_button,
-                                     GtkWidget **calendar_day_buttons) {
+                                     GtkWidget **calendar_day_buttons,
+                                     GtkWidget *calendar_note_button) {
 
     /* Integers for looping                                                   */
     int i, j;
