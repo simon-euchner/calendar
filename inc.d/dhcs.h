@@ -27,6 +27,7 @@
 #include "days.h"
 #include "sett.h"
 #include "dtiw.h"
+#include "dniw.h"
 
 /* Data structure for shared data between signal handlers                     */
 typedef struct _SharedData {
