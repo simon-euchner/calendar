@@ -39,6 +39,8 @@ typedef struct _SharedData {
     GtkWidget *calendar_day_buttons[MPY*BPM];
     GtkWidget *tiw_window;
     GtkTextBuffer *tiw_buffer;
+    GtkWidget *notes_window;
+    GtkTextBuffer *notes_buffer;
     char *abspath_to_note;
     int tiw_pressed_day_index;
     char *abspath_to_dbtm_file;
