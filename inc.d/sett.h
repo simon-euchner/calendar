@@ -65,6 +65,8 @@ extern const char *calendar_notes_button_label;
 extern const char *calendar_notes_button_bg_color;
 extern const char *calendar_notes_button_bg_color_hover;
 extern const char *calendar_notes_button_bg_color_active;
+extern const char *calendar_notes_window_size_x;
+extern const char *calendar_notes_window_size_y;
 extern const char *calendar_year_button_bg_color;
 extern const char *calendar_year_button_bg_color_hover;
 extern const char *calendar_year_button_bg_color_active;
