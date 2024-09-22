@@ -312,6 +312,8 @@ static void open_text_input_window(GtkWidget *widget, gpointer g_data) {
     tiw_notepad         = gtk_text_view_new_with_buffer(tiw_buffer);
 
     window_widgets_initialize(tiw_window,
+                              text_input_window_width,
+                              text_input_window_height,
                               tiw_header_label,
                               tiw_quit_button,
                               tiw_header,
@@ -441,6 +443,8 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
 
     /* Reuse function from text input window to initialize widgets            */
     window_widgets_initialize(notes_window,
+                              calendar_notes_window_width,
+                              calendar_notes_window_height,
                               notes_header_label,
                               notes_quit_button,
                               notes_header,

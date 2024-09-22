@@ -27,6 +27,8 @@
 #include "sett.h"
 
 void window_widgets_initialize(GtkWidget *,
+                               int,
+                               int,
                                GtkWidget *,
                                GtkWidget *,
                                GtkWidget *,
