@@ -311,15 +311,15 @@ static void open_text_input_window(GtkWidget *widget, gpointer g_data) {
     tiw_buffer          = gtk_text_buffer_new(NULL);
     tiw_notepad         = gtk_text_view_new_with_buffer(tiw_buffer);
 
-    tiw_widgets_initialize(tiw_window,
-                           tiw_header_label,
-                           tiw_quit_button,
-                           tiw_header,
-                           tiw_margin_left,
-                           tiw_margin_right,
-                           tiw_margin_top,
-                           tiw_margin_bottom,
-                           tiw_notepad);
+    window_widgets_initialize(tiw_window,
+                              tiw_header_label,
+                              tiw_quit_button,
+                              tiw_header,
+                              tiw_margin_left,
+                              tiw_margin_right,
+                              tiw_margin_top,
+                              tiw_margin_bottom,
+                              tiw_notepad);
     /* ---------------------------------------------------------------------- */
 
     /* Draw text input window                                                 */
@@ -440,15 +440,15 @@ static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
     notes_notepad         = gtk_text_view_new_with_buffer(notes_buffer);
 
     /* Reuse function from text input window to initialize widgets            */
-    tiw_widgets_initialize(notes_window,
-                           notes_header_label,
-                           notes_quit_button,
-                           notes_header,
-                           notes_margin_left,
-                           notes_margin_right,
-                           notes_margin_top,
-                           notes_margin_bottom,
-                           notes_notepad);
+    window_widgets_initialize(notes_window,
+                              notes_header_label,
+                              notes_quit_button,
+                              notes_header,
+                              notes_margin_left,
+                              notes_margin_right,
+                              notes_margin_top,
+                              notes_margin_bottom,
+                              notes_notepad);
     /* ---------------------------------------------------------------------- */
 
     /* Draw window to input notes                                             */

@@ -26,15 +26,15 @@
 #include "defi.h"
 #include "sett.h"
 
-void tiw_widgets_initialize(GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *);
+void window_widgets_initialize(GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *,
+                               GtkWidget *);
 
 char *create_text_input_window(int,
                                const char *,

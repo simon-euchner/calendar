@@ -39,16 +39,18 @@ static void create_tiw_layout(GtkWidget *,
                               GtkWidget *);
 
 
-/* Initialize widgets for text input window                                   */
-void tiw_widgets_initialize(GtkWidget *tiw_window,
-                            GtkWidget *tiw_header_label,
-                            GtkWidget *tiw_quit_button,
-                            GtkWidget *tiw_header,
-                            GtkWidget *tiw_margin_left,
-                            GtkWidget *tiw_margin_right,
-                            GtkWidget *tiw_margin_top,
-                            GtkWidget *tiw_margin_bottom,
-                            GtkWidget *tiw_notepad) {
+/* Initialize widgets for text input window; note the more general name, as   *
+ * this function will be reused for the notes window later to not duplicate   *
+ * code unnecessarily.                                                        */
+void window_widgets_initialize(GtkWidget *tiw_window,
+                               GtkWidget *tiw_header_label,
+                               GtkWidget *tiw_quit_button,
+                               GtkWidget *tiw_header,
+                               GtkWidget *tiw_margin_left,
+                               GtkWidget *tiw_margin_right,
+                               GtkWidget *tiw_margin_top,
+                               GtkWidget *tiw_margin_bottom,
+                               GtkWidget *tiw_notepad) {
 
     /* Names of widgets are set to the calendar versions of them (when        *
      * possible) to apply consistent CSS settings with repsect to the actual  *
