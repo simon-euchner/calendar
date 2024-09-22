@@ -69,12 +69,12 @@ const char *calendar_day_button_marked_font_color_hover   = "#000000"          ;
 const char *calendar_day_button_marked_bg_color_active    = "#FF0000"          ;
 const char *calendar_day_button_marked_font_color_active  = "#000000"          ;
 
+const int   calendar_notes_window_width                   = 800                ;
+const int   calendar_notes_window_height                  = 500                ;
 const char *calendar_notes_button_label                   = "Notizen"          ;
 const char *calendar_notes_button_bg_color                = "#AAAAAA"          ;
 const char *calendar_notes_button_bg_color_hover          = "#FFFF00"          ;
 const char *calendar_notes_button_bg_color_active         = "#FF0000"          ;
-const char *calendar_notes_window_size_x                  = 800                ;
-const char *calendar_notes_window_size_y                  = 500                ;
 
 const char *calendar_year_button_bg_color                 = "#AAAAAA"          ;
 const char *calendar_year_button_bg_color_hover           = "#FFFF00"          ;
