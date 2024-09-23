@@ -46,6 +46,7 @@ void initialize(int **,
                 GtkWidget *,
                 GtkWidget *,
                 GtkWidget **,
-                GtkWidget **);
+                GtkWidget **,
+                GtkWidget *);
 
 #endif

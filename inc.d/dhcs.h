@@ -27,6 +27,7 @@
 #include "days.h"
 #include "sett.h"
 #include "dtiw.h"
+#include "dniw.h"
 
 /* Data structure for shared data between signal handlers                     */
 typedef struct _SharedData {
@@ -38,10 +39,13 @@ typedef struct _SharedData {
     GtkWidget *calendar_day_buttons[MPY*BPM];
     GtkWidget *tiw_window;
     GtkTextBuffer *tiw_buffer;
+    GtkWidget *notes_window;
+    GtkTextBuffer *notes_buffer;
     char *abspath_to_note;
     int tiw_pressed_day_index;
     char *abspath_to_dbtm_file;
     int *calendar_dbtm;
+    char *abspath_to_notes_file;
 } SharedData;
 
 void define_handlers_connect_signals(char *,
@@ -54,6 +58,8 @@ void define_handlers_connect_signals(char *,
                                      GtkWidget *,
                                      GtkWidget *,
                                      GtkWidget *,
-                                     GtkWidget **);
+                                     GtkWidget **,
+                                     char *,
+                                     GtkWidget *);
 
 #endif

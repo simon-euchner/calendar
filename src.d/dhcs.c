@@ -28,6 +28,8 @@ static void change_year_worker(const char *, SharedData *);
 static void open_text_input_window(GtkWidget *, gpointer);
 static void send_destroy_signal_to_window(GtkWidget *, gpointer);
 static void save_and_quit_tiw(GtkWidget *, gpointer);
+static void open_window_for_notes(GtkWidget *, gpointer);
+static void save_and_quit_notes(GtkWidget *widget, gpointer g_data);
 
 
 /* Connect signals                                                            *
@@ -46,7 +48,9 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
                                      GtkWidget *calendar_quit_button,
                                      GtkWidget *calendar_prev_year_button,
                                      GtkWidget *calendar_next_year_button,
-                                     GtkWidget **calendar_day_buttons) {
+                                     GtkWidget **calendar_day_buttons,
+                                     char *abspath_to_notes_file,
+                                     GtkWidget *calendar_notes_button) {
 
     /* Integers for looping                                                   */
     int i, j;
@@ -62,6 +66,7 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
         shared_data->calendar_day_buttons[i] = calendar_day_buttons[i];
     shared_data->abspath_to_dbtm_file = abspath_to_dbtm_file;
     shared_data->calendar_dbtm = calendar_dbtm;
+    shared_data->abspath_to_notes_file = abspath_to_notes_file;
     /* ---------------------------------------------------------------------- */
 
     /* --- Connect signals -------------------------------------------------- */
@@ -94,6 +99,12 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
     g_signal_connect(calendar_window,
                      "destroy",
                      G_CALLBACK(quit_calendar),
+                     shared_data);
+
+    /* calendar_notes_button: Open text window for notes                      */
+    g_signal_connect(calendar_notes_button,
+                     "clicked",
+                     G_CALLBACK(open_window_for_notes),
                      shared_data);
     /* ---------------------------------------------------------------------- */
 }
@@ -137,6 +148,7 @@ static void quit_calendar(GtkWidget *widget, gpointer g_data) {
     free(shared_data->abspath_to_year_file);
     free(shared_data->abspath_to_dbtm_file);
     free(shared_data->calendar_dbtm);
+    free(shared_data->abspath_to_notes_file);
     free(shared_data);
 }
 
@@ -299,15 +311,17 @@ static void open_text_input_window(GtkWidget *widget, gpointer g_data) {
     tiw_buffer          = gtk_text_buffer_new(NULL);
     tiw_notepad         = gtk_text_view_new_with_buffer(tiw_buffer);
 
-    tiw_widgets_initialize(tiw_window,
-                           tiw_header_label,
-                           tiw_quit_button,
-                           tiw_header,
-                           tiw_margin_left,
-                           tiw_margin_right,
-                           tiw_margin_top,
-                           tiw_margin_bottom,
-                           tiw_notepad);
+    window_widgets_initialize(tiw_window,
+                              text_input_window_width,
+                              text_input_window_height,
+                              tiw_header_label,
+                              tiw_quit_button,
+                              tiw_header,
+                              tiw_margin_left,
+                              tiw_margin_right,
+                              tiw_margin_top,
+                              tiw_margin_bottom,
+                              tiw_notepad);
     /* ---------------------------------------------------------------------- */
 
     /* Draw text input window                                                 */
@@ -397,4 +411,109 @@ static void save_and_quit_tiw(GtkWidget *widget, gpointer g_data) {
     /* Decrease reference counts/clean up                                     */
     g_object_unref(shared_data->tiw_buffer);
     gtk_window_destroy(GTK_WINDOW(shared_data->tiw_window));
+}
+
+/* Callback: Open text input window for notes                                 */
+static void open_window_for_notes(GtkWidget *widget, gpointer g_data) {
+
+    (void)widget;
+    SharedData *shared_data = (SharedData *)g_data;
+
+    /* --- Define widgets for notes window and initialize them -------------- */
+    GtkWidget *notes_window;
+    GtkWidget *notes_vbox, *notes_hbox;
+    GtkWidget *notes_header_label, *notes_quit_button, *notes_header;
+    GtkWidget *notes_margin_left, *notes_margin_right;
+    GtkWidget *notes_margin_top, *notes_margin_bottom;
+    GtkTextBuffer *notes_buffer;
+    GtkWidget *notes_notepad;
+
+    notes_window          = gtk_window_new();
+    notes_vbox            = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+    notes_hbox            = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+    notes_header_label    = gtk_label_new(NULL);
+    notes_quit_button     = gtk_button_new_with_label("X");
+    notes_header          = gtk_frame_new(NULL);
+    notes_margin_left     = gtk_frame_new(NULL);
+    notes_margin_right    = gtk_frame_new(NULL);
+    notes_margin_top      = gtk_frame_new(NULL);
+    notes_margin_bottom   = gtk_frame_new(NULL);
+    notes_buffer          = gtk_text_buffer_new(NULL);
+    notes_notepad         = gtk_text_view_new_with_buffer(notes_buffer);
+
+    /* Reuse function from text input window to initialize widgets            */
+    window_widgets_initialize(notes_window,
+                              calendar_notes_window_width,
+                              calendar_notes_window_height,
+                              notes_header_label,
+                              notes_quit_button,
+                              notes_header,
+                              notes_margin_left,
+                              notes_margin_right,
+                              notes_margin_top,
+                              notes_margin_bottom,
+                              notes_notepad);
+    /* ---------------------------------------------------------------------- */
+
+    /* Draw window to input notes                                             */
+    create_window_for_notes(shared_data->abspath_to_notes_file,
+                            notes_vbox,
+                            notes_hbox,
+                            notes_header_label,
+                            notes_quit_button,
+                            notes_header,
+                            notes_margin_left,
+                            notes_margin_right,
+                            notes_margin_top,
+                            notes_margin_bottom,
+                            notes_buffer,
+                            notes_notepad);
+
+    /* Connect signals                                                        */
+    shared_data->notes_window = notes_window;
+    shared_data->notes_buffer = notes_buffer;
+    g_signal_connect(notes_quit_button,
+                     "clicked",
+                     G_CALLBACK(send_destroy_signal_to_window),
+                     notes_window);
+    g_signal_connect(notes_window,
+                     "destroy",
+                     G_CALLBACK(save_and_quit_notes),
+                     shared_data);
+
+    /* Present text input window *notes_window* with title for window manager */
+    gtk_window_set_modal(GTK_WINDOW(notes_window), TRUE); /* Disable          *
+                                                           * interaction with *
+                                                           * parent window    */
+    gtk_window_set_title(GTK_WINDOW(notes_window), name_for_window_manager);
+    gtk_window_set_child(GTK_WINDOW(notes_window), notes_vbox);
+    gtk_window_present(GTK_WINDOW(notes_window));
+}
+
+/* Callback: Save text to file and quit notes window                          */
+static void save_and_quit_notes(GtkWidget *widget, gpointer g_data) {
+
+    (void)widget;
+    SharedData *shared_data = (SharedData *)g_data;
+    GtkTextIter start, end;
+    char *buffer;
+
+    /* Get buffer contents                                                    */
+    gtk_text_buffer_get_start_iter(shared_data->notes_buffer, &start);
+    gtk_text_buffer_get_end_iter(shared_data->notes_buffer, &end);
+    buffer = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(
+                                          shared_data->notes_buffer),
+                                      &start,
+                                      &end,
+                                      FALSE);
+
+    /* Save buffer contents to file                                           */
+    FILE *file = fopen(shared_data->abspath_to_notes_file, "w");
+    fprintf(file, "%s", buffer);
+    free(buffer); /* Data is owned by caller and thus must be freed manually  */
+    fclose(file);
+
+    /* Decrease reference counts/clean up                                     */
+    g_object_unref(shared_data->notes_buffer);
+    gtk_window_destroy(GTK_WINDOW(shared_data->notes_window));
 }

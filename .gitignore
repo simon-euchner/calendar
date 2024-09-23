@@ -1,2 +1,3 @@
 *.o
 calendar
+/dat.d/notes.txt

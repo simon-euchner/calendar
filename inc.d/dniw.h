@@ -14,38 +14,30 @@
  *                                                                            *
  * -------------------------------------------------------------------------- *
  *                                                                            *
- * Create calendar layout and append it to the vbox.                          *
+ * Definition of functions allowing to draw the complete window where notes   *
+ * may be placed.                                                             *
  *                                                                            *
  * -------------------------------------------------------------------------- */
 
 
-#ifndef CALL_H
-#define CALL_H
+#ifndef DNIW_H
+#define DNIW_H
 
 #include <gtk/gtk.h>
 #include "defi.h"
 #include "sett.h"
 
-void create_calendar_layout(int **,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget **,
-                            GtkWidget **,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget *,
-                            GtkWidget **,
-                            GtkWidget **,
-                            GtkWidget *);
+void create_window_for_notes(const char *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkWidget *,
+                             GtkTextBuffer *,
+                             GtkWidget *);
 
 #endif

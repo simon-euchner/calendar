@@ -85,6 +85,24 @@ static void get_css_string(char *buffer) {
                     "    border-width: 1px;"
                     "    border-color: %s;"
                     "}"
+                    "#calendar_notes_button {"
+                    "    background: %s;"
+                    "    color: %s;"
+                    "    font-family: Monospace;"
+                    "    font-weight: bold;"
+                    "    font-size: %dpx;"
+                    "    border-radius: 0px;"
+                    "    border-width: 1px;"
+                    "    border-color: %s;"
+                    "    margin: 0px;"
+                    "    padding: 0px;"
+                    "}"
+                    "#calendar_notes_button:hover {"
+                    "    background: %s;"
+                    "}"
+                    "#calendar_notes_button:active {"
+                    "    background: %s;"
+                    "}"
                     "#calendar_year_button {"
                     "    background: %s;"
                     "    color: %s;"
@@ -196,6 +214,13 @@ static void get_css_string(char *buffer) {
                             calendar_window_font_color,
                             calendar_calendar_font_size,
                             calendar_window_bg_color,
+                            /* calendar_notes_button                          */
+                            calendar_notes_button_bg_color,
+                            calendar_window_font_color,
+                            calendar_calendar_font_size,
+                            calendar_window_bg_color,
+                            calendar_notes_button_bg_color_hover,
+                            calendar_notes_button_bg_color_active,
                             /* calendar_year_button                           */
                             calendar_year_button_bg_color,
                             calendar_window_font_color,
