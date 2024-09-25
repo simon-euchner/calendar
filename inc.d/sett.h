@@ -77,6 +77,7 @@ extern const int   text_input_window_height;
 extern const char *tiw_notepad_bg_color;
 extern const char *tiw_notepad_font_color;
 extern const int   tiw_notepad_font_size;
+extern const int   calendar_today_button_policy;
 extern const char *day_labels[BPR];
 extern const int   max_month_len;
 extern const char *month_labels[MPY];

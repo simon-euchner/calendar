@@ -90,6 +90,12 @@ const char *tiw_notepad_bg_color                          = "#808080"          ;
 const char *tiw_notepad_font_color                        = "#000000"          ;
 const int   tiw_notepad_font_size                         = 22                 ;
 
+/* Policy for marking button of current day                                   *
+ * policy 0: Do not mark current day                                          *
+ * policy 1: Mark current day but do not overwrite CSS settings of button     *
+ * policy 2: Mark current day and, if nessesary, overwrite CSS settings       */
+const int   calendar_today_button_policy = 2;
+
 /* Weekdays name must be abbreviated to two characters                        */
 const char *day_labels[BPR]                               = { "Mo",
                                                               "Di",
