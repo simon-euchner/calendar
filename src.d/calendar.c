@@ -21,6 +21,7 @@
 
 #include <gtk/gtk.h>
 #include <errno.h>
+#include <time.h>
 #include "../inc.d/days.h"
 #include "../inc.d/defi.h"
 #include "../inc.d/init.h"
@@ -98,6 +99,20 @@ static void activate(GtkApplication *calendar, gpointer data) {
     char *abspath_to_notes_file = (char *)malloc(len_of_path+9+1);
     strcpy(abspath_to_notes_file, abspath_to_datd);
     strcat(abspath_to_notes_file, "notes.txt");
+
+    /* Determine current year and which button represents today               */
+    int calendar_today_button_index, calendar_today_year, shift = 0;
+    calendar_today_button_index = calendar_today_year = 0;
+    if (calendar_today_button_policy) {
+        time_t current_time; time(&current_time);
+        struct tm *today = localtime(&current_time);
+        today->tm_mon = today->tm_mon+1;
+        calendar_today_year = today->tm_year+1900;
+        calendar_today_button_index
+            = (today->tm_mon-1)*(int)BPM+today->tm_mday-1;
+        while (!calendar_data[today->tm_mon-1][shift++])
+            calendar_today_button_index++;
+    }
     /* ---------------------------------------------------------------------- */
 
     /* --- Define widgets, initialize, set properties and load CSS ---------- */
