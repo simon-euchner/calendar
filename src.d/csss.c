@@ -184,6 +184,26 @@ static void get_css_string(char *buffer) {
                     "    background-color: %s;"
                     "    color: %s;"
                     "}"
+                    "#calendar_today_button {"
+                    "    background: %s;"
+                    "    color: %s;"
+                    "    font-family: Monospace;"
+                    "    font-weight: bold;"
+                    "    font-size: %dpx;"
+                    "    border-radius: 0px;"
+                    "    border-width: 1px;"
+                    "    border-color: %s;"
+                    "    margin: 0px;"
+                    "    padding: 0px;"
+                    "}"
+                    "#calendar_today_button:hover {"
+                    "    background-color: %s;"
+                    "    color: %s;"
+                    "}"
+                    "#calendar_today_button:active {"
+                    "    background-color: %s;"
+                    "    color: %s;"
+                    "}"
                     "textview {"
                     "    background: %s;"
                     "    color: %s;"
@@ -250,6 +270,15 @@ static void get_css_string(char *buffer) {
                             /* calendar_day_button_marked                    */
                             calendar_day_button_marked_bg_color,
                             calendar_day_button_marked_font_color,
+                            calendar_calendar_font_size,
+                            calendar_window_bg_color,
+                            calendar_day_button_marked_bg_color_hover,
+                            calendar_day_button_marked_font_color_hover,
+                            calendar_day_button_marked_bg_color_active,
+                            calendar_day_button_marked_font_color_active,
+                            /* calendar_today_button                         */
+                            calendar_today_button_bg_color,
+                            calendar_today_button_font_color,
                             calendar_calendar_font_size,
                             calendar_window_bg_color,
                             calendar_day_button_marked_bg_color_hover,
