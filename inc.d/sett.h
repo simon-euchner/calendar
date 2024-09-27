@@ -61,6 +61,8 @@ extern const char *calendar_day_button_marked_bg_color_hover;
 extern const char *calendar_day_button_marked_font_color_hover;
 extern const char *calendar_day_button_marked_bg_color_active;
 extern const char *calendar_day_button_marked_font_color_active;
+extern const char *calendar_today_button_bg_color;
+extern const char *calendar_today_button_font_color;
 extern const int   calendar_notes_window_width;
 extern const int   calendar_notes_window_height;
 extern const char *calendar_notes_button_label;

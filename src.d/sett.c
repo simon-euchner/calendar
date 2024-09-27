@@ -80,6 +80,9 @@ const char *calendar_year_button_bg_color                 = "#AAAAAA"          ;
 const char *calendar_year_button_bg_color_hover           = "#FFFF00"          ;
 const char *calendar_year_button_bg_color_active          = "#FF0000"          ;
 
+const char *calendar_today_button_bg_color                = "#0000EE"          ;
+const char *calendar_today_button_font_color              = "#AAAAAA"          ;
+
 const int   calendar_month_distance_vert                  = 40                 ;
 const int   calendar_month_distance_hori                  = 10                 ;
 
