@@ -165,8 +165,8 @@ static void activate(GtkApplication *calendar, gpointer data) {
 
     /* Initialize and set properties of defined widgets                       */
     initialize(year,
-               calendar_today_button_index,
                calendar_today_year,
+               calendar_today_button_index,
                calendar_data,
                calendar_dbtm,
                calendar_window,

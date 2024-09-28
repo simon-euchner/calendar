@@ -24,8 +24,8 @@
 
 
 void initialize(int year,
-                int calendar_today_button_index,
                 int calendar_today_year,
+                int calendar_today_button_index,
                 int **calendar_data,
                 int *calendar_dbtm,
                 GtkWidget *calendar_window,
@@ -138,8 +138,8 @@ void initialize(int year,
     gtk_widget_set_name(calendar_notes_button, "calendar_notes_button");
 
     /* Mark current day with policy *calendar_today_button_policy*            */
-    mark_today(year,
-               calendar_today_button_policy,
+    mark_today(calendar_today_button_policy,
+               year,
                calendar_today_year,
                calendar_day_buttons[calendar_today_button_index]);
 
