@@ -20,22 +20,11 @@
  * -------------------------------------------------------------------------- */
 
 
-#include "../inc.d/mcdb.h"
+#ifndef MCDB_H
+#define MCDB_H
 
+#include "<gtk/gtk.h>"
 
-/* Mark current day button with policy *policy*;                              *
- * policy 0: Do not mark current day                                          *
- * policy 1: Mark current day but do not overwrite CSS settings of button     *
- * policy 2: Mark current day and, if nessesary, overwrite CSS settings       */
-static void mark_today(int policy, GtkWidget *calendar_today_button) {
-    switch (policy) {
-        case 0: return;
-        case 1: gtk_widget_set_name(calendar_today_button,
-                                    "calendar_today_button");
-                return;
-        case 2: gtk_widget_set_name(calendar_today_button,
-                                    "calendar_today_button");
-                return;
-        default: return;
-    }
-}
+static void mark_today(int, GtkWidget *);
+
+#endif
