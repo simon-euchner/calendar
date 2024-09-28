@@ -25,6 +25,6 @@
 
 #include <gtk/gtk.h>
 
-void mark_today(int, GtkWidget *);
+void mark_today(int, int, int, GtkWidget *);
 
 #endif
