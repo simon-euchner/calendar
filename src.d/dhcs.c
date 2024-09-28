@@ -417,8 +417,17 @@ static void save_and_quit_tiw(GtkWidget *widget, gpointer g_data) {
             shared_data->calendar_dbtm[index] = 0;
         }
     }
-    free(shared_data->abspath_to_note);
     free(buffer); /* Data is owned by caller and thus must be freed manually  */
+
+    /* Mark current day with policy *calendar_today_button_policy*            */
+    index = shared_data->calendar_today_button_index;
+    mark_today(calendar_today_button_policy,
+               shared_data->year,
+               shared_data->calendar_today_year,
+               shared_data->calendar_day_buttons[index]);
+
+    /* Clean up                                                               */
+    free(shared_data->abspath_to_note);
 
     /* Decrease reference counts/clean up                                     */
     g_object_unref(shared_data->tiw_buffer);
