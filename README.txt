@@ -59,6 +59,7 @@ Contents.
         dhcs.c/.h     : Define signal handlers and connect signals
         dtiw.c/.h     : Draw text input window
         dniw.c/.h     : Draw notes input window
+        mcdb.c/.h     : Function to mark current day button
 
 
 Branches.

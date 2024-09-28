@@ -21,6 +21,7 @@
 
 #include "../inc.d/dhcs.h"
 
+
 static void quit_calendar(GtkWidget *, gpointer);
 static void go_to_prev_year(GtkWidget *, gpointer);
 static void go_to_next_year(GtkWidget *, gpointer);
@@ -38,7 +39,9 @@ static void save_and_quit_notes(GtkWidget *widget, gpointer g_data);
  * which is NOT a GTK object, i.e. lifetime not handled by GTKs               *
  * reference-counting, must be dereferenced in the callback function of the   *
  * quit button.                                                               */
-void define_handlers_connect_signals(char *abspath_to_year_file,
+void define_handlers_connect_signals(const int calendar_today_year,
+                                     const int calendar_today_button_index,
+                                     char *abspath_to_year_file,
                                      const int *year,
                                      char *abspath_to_dbtm_file,
                                      int *calendar_dbtm,
@@ -67,6 +70,8 @@ void define_handlers_connect_signals(char *abspath_to_year_file,
     shared_data->abspath_to_dbtm_file = abspath_to_dbtm_file;
     shared_data->calendar_dbtm = calendar_dbtm;
     shared_data->abspath_to_notes_file = abspath_to_notes_file;
+    shared_data->calendar_today_year         = calendar_today_year;
+    shared_data->calendar_today_button_index = calendar_today_button_index;
     /* ---------------------------------------------------------------------- */
 
     /* --- Connect signals -------------------------------------------------- */
@@ -262,6 +267,13 @@ static void change_year_worker(const char *which, SharedData* shared_data) {
         }
     }
 
+    /* Mark current day with policy *calendar_today_button_policy*            */
+    int index = shared_data->calendar_today_button_index;
+    mark_today(calendar_today_button_policy,
+               shared_data->year,
+               shared_data->calendar_today_year,
+               shared_data->calendar_day_buttons[index]);
+
     /* Write new year to file *year.txt*                                      */
     file = fopen(shared_data->abspath_to_year_file, "w");
     fprintf(file, "%d\n", shared_data->year);
@@ -405,8 +417,17 @@ static void save_and_quit_tiw(GtkWidget *widget, gpointer g_data) {
             shared_data->calendar_dbtm[index] = 0;
         }
     }
-    free(shared_data->abspath_to_note);
     free(buffer); /* Data is owned by caller and thus must be freed manually  */
+
+    /* Mark current day with policy *calendar_today_button_policy*            */
+    index = shared_data->calendar_today_button_index;
+    mark_today(calendar_today_button_policy,
+               shared_data->year,
+               shared_data->calendar_today_year,
+               shared_data->calendar_day_buttons[index]);
+
+    /* Clean up                                                               */
+    free(shared_data->abspath_to_note);
 
     /* Decrease reference counts/clean up                                     */
     g_object_unref(shared_data->tiw_buffer);

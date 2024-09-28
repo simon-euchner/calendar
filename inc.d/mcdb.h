@@ -14,30 +14,17 @@
  *                                                                            *
  * -------------------------------------------------------------------------- *
  *                                                                            *
- * Create calendar header and append it to the vbox.                          *
+ * In this file a function is implemented, responsible for marking the        *
+ * current day. Name: M(m)ark C(c)urrent D(d)ay B(b)utton                     *
  *                                                                            *
  * -------------------------------------------------------------------------- */
 
 
-#include "../inc.d/calh.h"
+#ifndef MCDB_H
+#define MCDB_H
 
+#include <gtk/gtk.h>
 
-/* Create header for calendar window                                          */
-void create_calendar_header(const int *year,
-                            GtkWidget *vbox,
-                            GtkWidget *calendar_header_label,
-                            GtkWidget *calendar_quit_button,
-                            GtkWidget *calendar_header) {
+void mark_today(int, int, int, GtkWidget *);
 
-    /* Set label                                                              */
-    int len = strlen(calendar_header_text) - 2 + 1;
-    char buffer[len+MYL];
-    snprintf(buffer, len+MYL, calendar_header_text, *year);
-    gtk_label_set_text(GTK_LABEL(calendar_header_label), buffer);
-    gtk_frame_set_child(GTK_FRAME(calendar_header), calendar_header_label);
-
-    GtkWidget *grid = gtk_grid_new();
-    gtk_grid_attach(GTK_GRID(grid), calendar_header, 0, 0, 2, 1);
-    gtk_grid_attach(GTK_GRID(grid), calendar_quit_button, 1, 0, 2, 1);
-    gtk_box_append(GTK_BOX(vbox), grid);
-}
+#endif

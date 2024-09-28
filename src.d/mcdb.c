@@ -14,30 +14,35 @@
  *                                                                            *
  * -------------------------------------------------------------------------- *
  *                                                                            *
- * Create calendar header and append it to the vbox.                          *
+ * In this file a function is implemented, responsible for marking the        *
+ * current day. Name: M(m)ark C(c)urrent D(d)ay B(b)utton                     *
  *                                                                            *
  * -------------------------------------------------------------------------- */
 
 
-#include "../inc.d/calh.h"
+#include "../inc.d/mcdb.h"
 
 
-/* Create header for calendar window                                          */
-void create_calendar_header(const int *year,
-                            GtkWidget *vbox,
-                            GtkWidget *calendar_header_label,
-                            GtkWidget *calendar_quit_button,
-                            GtkWidget *calendar_header) {
-
-    /* Set label                                                              */
-    int len = strlen(calendar_header_text) - 2 + 1;
-    char buffer[len+MYL];
-    snprintf(buffer, len+MYL, calendar_header_text, *year);
-    gtk_label_set_text(GTK_LABEL(calendar_header_label), buffer);
-    gtk_frame_set_child(GTK_FRAME(calendar_header), calendar_header_label);
-
-    GtkWidget *grid = gtk_grid_new();
-    gtk_grid_attach(GTK_GRID(grid), calendar_header, 0, 0, 2, 1);
-    gtk_grid_attach(GTK_GRID(grid), calendar_quit_button, 1, 0, 2, 1);
-    gtk_box_append(GTK_BOX(vbox), grid);
+/* Mark current day button with policy *policy*;                              *
+ * policy 0: Do not mark current day                                          *
+ * policy 1: Mark current day but do not overwrite CSS settings of button     *
+ * policy 2: Mark current day and, if nessesary, overwrite CSS settings       */
+void mark_today(int policy,
+                int year,
+                int calendar_today_year,
+                GtkWidget *calendar_today_button) {
+    switch (policy) {
+        case 0: return;
+        case 1: if (    (year == calendar_today_year)
+                     && strcmp(gtk_widget_get_name(calendar_today_button),
+                               "calendar_day_button_marked")               )
+                    gtk_widget_set_name(calendar_today_button,
+                                        "calendar_today_button");
+                return;
+        case 2: if (year == calendar_today_year)
+                    gtk_widget_set_name(calendar_today_button,
+                                        "calendar_today_button");
+                return;
+        default: return;
+    }
 }

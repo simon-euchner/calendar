@@ -48,10 +48,11 @@ F7  = call
 F8  = dhcs
 F9  = dtiw
 F10 = dniw
+F11 = mcdb
 
 # Specify object code files
 OBJ_FILENAMES = ${F1}.o ${F2}.o ${F3}.o ${F4}.o ${F5}.o ${F6}.o ${F7}.o ${F8}.o\
-				${F9}.o ${F10}.o
+				${F9}.o ${F10}.o ${F11}.o
 OBJ_FILES = ${foreach file, ${OBJ_FILENAMES}, ${OBJ}/${file}}
 
 
@@ -109,6 +110,10 @@ ${OBJ}/${F9}.o: ${SRC}/${F9}.c
 # dniw.c
 ${OBJ}/${F10}.o: ${SRC}/${F10}.c
 	${CC} ${FLAGS} ${OLVL} ${CFLAGS} -o ${OBJ}/${F10}.o -c ${SRC}/${F10}.c
+
+# mcdb.c
+${OBJ}/${F11}.o: ${SRC}/${F11}.c
+	${CC} ${FLAGS} ${OLVL} ${CFLAGS} -o ${OBJ}/${F11}.o -c ${SRC}/${F11}.c
 
 
 ### Cleanup

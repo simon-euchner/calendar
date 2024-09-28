@@ -25,7 +25,10 @@
 #include "defi.h"
 #include "csss.h"
 
-void initialize(int **,
+void initialize(int,
+                int,
+                int,
+                int **,
                 int *,
                 GtkWidget *,
                 GtkWidget *,

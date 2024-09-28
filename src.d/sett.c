@@ -80,6 +80,9 @@ const char *calendar_year_button_bg_color                 = "#AAAAAA"          ;
 const char *calendar_year_button_bg_color_hover           = "#FFFF00"          ;
 const char *calendar_year_button_bg_color_active          = "#FF0000"          ;
 
+const char *calendar_today_button_bg_color                = "#990099"          ;
+const char *calendar_today_button_font_color              = "#000000"          ;
+
 const int   calendar_month_distance_vert                  = 40                 ;
 const int   calendar_month_distance_hori                  = 10                 ;
 
@@ -89,6 +92,12 @@ const int   text_input_window_height                      = 400                ;
 const char *tiw_notepad_bg_color                          = "#808080"          ;
 const char *tiw_notepad_font_color                        = "#000000"          ;
 const int   tiw_notepad_font_size                         = 22                 ;
+
+/* Policy for marking button of current day                                   *
+ * policy 0: Do not mark current day                                          *
+ * policy 1: Mark current day but do not overwrite CSS settings of button     *
+ * policy 2: Mark current day and, if nessesary, overwrite CSS settings       */
+const int   calendar_today_button_policy = 2;
 
 /* Weekdays name must be abbreviated to two characters                        */
 const char *day_labels[BPR]                               = { "Mo",
