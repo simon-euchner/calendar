@@ -48,7 +48,9 @@ typedef struct _SharedData {
     char *abspath_to_notes_file;
 } SharedData;
 
-void define_handlers_connect_signals(char *,
+void define_handlers_connect_signals(const int,
+                                     const int,
+                                     char *,
                                      const int *,
                                      char *,
                                      int *,

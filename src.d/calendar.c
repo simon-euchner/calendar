@@ -222,7 +222,9 @@ static void activate(GtkApplication *calendar, gpointer data) {
                            calendar_notes_button);
 
     /* Connect signals and define callback functions                          */
-    define_handlers_connect_signals(abspath_to_year_file,
+    define_handlers_connect_signals(calendar_today_year,
+                                    calendar_today_button_index,
+                                    abspath_to_year_file,
                                     &year,
                                     abspath_to_dbtm_file,
                                     calendar_dbtm,

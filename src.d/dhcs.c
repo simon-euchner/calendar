@@ -39,7 +39,9 @@ static void save_and_quit_notes(GtkWidget *widget, gpointer g_data);
  * which is NOT a GTK object, i.e. lifetime not handled by GTKs               *
  * reference-counting, must be dereferenced in the callback function of the   *
  * quit button.                                                               */
-void define_handlers_connect_signals(char *abspath_to_year_file,
+void define_handlers_connect_signals(const int calendar_today_year,
+                                     const int calendar_today_button_index,
+                                     char *abspath_to_year_file,
                                      const int *year,
                                      char *abspath_to_dbtm_file,
                                      int *calendar_dbtm,
