@@ -1,0 +1,63 @@
+o ---------------------------------------------------------------------------- o
+| Installation instructions for updates of *calendar*                          |
+o ---------------------------------------------------------------------------- o
+
+
+LICENSE NOTICE.
+
+    LICENSES: GPL-3.0
+
+    IMPORTANT: THIS IS FREE SOFTWARE WITHOUT ANY WARRANTY. THE USER IS IF FREE
+               TO MODIFY AND REDISTRIBUTE THIS SOFTWARE UNDER THE TERMS OF THE
+               LICENSE LISTED ABOVE PUBLISHED BY THE FREE SOFTWARE FOUNDATION.
+               THE PUBLISHER, SIMON EUCHNER, IS NOT RESPONSIBLE FOR ANY NEGATIVE
+               EFFECTS THIS SOFTWARE MAY CAUSE.
+
+
+Note.
+
+    Installation instructions in this file provide nessesary information to
+    update from any older to the newest version.
+
+    If you read this file I assume you alreaedy have an installation of
+    *calendar* up and running. If this is not the case, please read the
+    installation instructions in *README.txt*. If you already have a directory
+    *dat.d*, rest assured, you can keep using the same files. However, for
+    safety, please create a backup of *dat.d*, so in case something goes wrong
+    you do not loose all your appointments and notes.
+
+    That beeing said, updates may be installed.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+v1.1 -> v2.0
+    
+    Download the source code from github, i.e. go to releases and download the
+    latest released version.
+
+    Unpack files and change into the created directory.
+
+    Set *calendar_today_button_policy* in *src.d/sett.c* to the desired value.
+    Further information is given in *src.d/sett.c*.
+
+    Run *make*.
+
+    After the binary *calendar* has been build successfully, delete the binary
+    of the old version. Move the new binary from *bin.d* to the location where
+    you have had the binary of the older version. 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+v1.0 -> v1.1
+    
+    Download the source code from github, i.e. go to releases and download the
+    latest released version.
+
+    Unpack files and change into the created directory.
+
+    Run *make*.
+
+    After the binary *calendar* has been build successfully, delete the binary
+    of the old version. Move the new binary from *bin.d* to the location where
+    you have had the binary of the older version. 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
