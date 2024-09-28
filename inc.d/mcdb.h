@@ -23,7 +23,7 @@
 #ifndef MCDB_H
 #define MCDB_H
 
-#include "<gtk/gtk.h>"
+#include <gtk/gtk.h>
 
 static void mark_today(int, GtkWidget *);
 
