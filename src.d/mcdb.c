@@ -27,7 +27,7 @@
  * policy 0: Do not mark current day                                          *
  * policy 1: Mark current day but do not overwrite CSS settings of button     *
  * policy 2: Mark current day and, if nessesary, overwrite CSS settings       */
-static void mark_today(int policy, GtkWidget *calendar_today_button) {
+void mark_today(int policy, GtkWidget *calendar_today_button) {
     switch (policy) {
         case 0: return;
         case 1: gtk_widget_set_name(calendar_today_button,
