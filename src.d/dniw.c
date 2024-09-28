@@ -22,6 +22,7 @@
 
 #include "../inc.d/dniw.h"
 
+
 static void create_niw_header(GtkWidget *,
                               GtkWidget *,
                               GtkWidget *,
@@ -34,6 +35,7 @@ static void create_niw_layout(GtkWidget *,
                               GtkWidget *,
                               GtkWidget *,
                               GtkWidget *);
+
 
 void create_window_for_notes(const char *abspath_to_notes_file,
                              GtkWidget *notes_vbox,

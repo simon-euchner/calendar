@@ -21,6 +21,7 @@
 
 #include "../inc.d/calh.h"
 
+
 /* Create header for calendar window                                          */
 void create_calendar_header(const int *year,
                             GtkWidget *vbox,

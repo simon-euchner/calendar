@@ -21,6 +21,7 @@
 
 #include "../inc.d/call.h"
 
+
 /* Create layout of the actual calendar                                       */
 void create_calendar_layout(int **calendar_data,
                             GtkWidget *calendar_vbox,

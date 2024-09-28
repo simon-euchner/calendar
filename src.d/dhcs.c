@@ -21,6 +21,7 @@
 
 #include "../inc.d/dhcs.h"
 
+
 static void quit_calendar(GtkWidget *, gpointer);
 static void go_to_prev_year(GtkWidget *, gpointer);
 static void go_to_next_year(GtkWidget *, gpointer);
