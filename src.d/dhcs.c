@@ -70,6 +70,8 @@ void define_handlers_connect_signals(const int calendar_today_year,
     shared_data->abspath_to_dbtm_file = abspath_to_dbtm_file;
     shared_data->calendar_dbtm = calendar_dbtm;
     shared_data->abspath_to_notes_file = abspath_to_notes_file;
+    shared_data->calendar_today_year         = calendar_today_year;
+    shared_data->calendar_today_button_index = calendar_today_button_index;
     /* ---------------------------------------------------------------------- */
 
     /* --- Connect signals -------------------------------------------------- */
@@ -264,6 +266,13 @@ static void change_year_worker(const char *which, SharedData* shared_data) {
                                 "calendar_day_button_off");
         }
     }
+
+    /* Mark current day with policy *calendar_today_button_policy*            */
+    int index = shared_data->calendar_today_button_index;
+    mark_today(calendar_today_button_policy,
+               shared_data->year,
+               shared_data->calendar_today_year,
+               shared_data->calendar_day_buttons[index]);
 
     /* Write new year to file *year.txt*                                      */
     file = fopen(shared_data->abspath_to_year_file, "w");

@@ -28,6 +28,7 @@
 #include "sett.h"
 #include "dtiw.h"
 #include "dniw.h"
+#include "mcdb.h"
 
 /* Data structure for shared data between signal handlers                     */
 typedef struct _SharedData {
@@ -46,6 +47,8 @@ typedef struct _SharedData {
     char *abspath_to_dbtm_file;
     int *calendar_dbtm;
     char *abspath_to_notes_file;
+    int calendar_today_year;
+    int calendar_today_button_index;
 } SharedData;
 
 void define_handlers_connect_signals(const int,
