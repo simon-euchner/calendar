@@ -114,6 +114,12 @@ static void activate(GtkApplication *calendar, gpointer data) {
         while (!calendar_data[today->tm_mon-1][shift++])
             calendar_today_button_index++;
     }
+    // This variables is the problem; DONT KNOW HOW; BUT THIS DPEENDS ON*year*
+    // in FILE; I Thnk it is because calendar data in this contenxt must be
+    // the data for the current year, obviously. So, computing the data for
+    // the actual current year should fix the issue; Mabybe dont do it
+    // unnessesarily and chek if *year* maybe is the current year.
+    printf("%d\n", calendar_today_button_index);
     /* ---------------------------------------------------------------------- */
 
     /* --- Define widgets, initialize, set properties and load CSS ---------- */
