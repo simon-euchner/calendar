@@ -30,6 +30,21 @@ Note.
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+v2.0 -> v2.1
+ 
+    Download the source code from github, i.e. go to releases and download the
+    latest released version.
+
+    Unpack files and change into the created directory.
+
+    Run *make*.
+
+    After the binary *calendar* has been build successfully, delete the binary
+    of the old version. Move the new binary from *bin.d* to the location where
+    you have had the binary of the older version. 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 v1.1 -> v2.0
     
     Download the source code from github, i.e. go to releases and download the
