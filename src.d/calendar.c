@@ -87,19 +87,13 @@ static void activate(GtkApplication *calendar, gpointer data) {
         exit(1);
     }
 
-    /* Compute which day corresponds to which weekday                         */
+    /* Make space for information on date to weekday correspondence           */
     int jan[BPM], feb[BPM], mar[BPM], apr[BPM],
         mai[BPM], jun[BPM], jul[BPM], aug[BPM],
         sep[BPM], oct[BPM], nov[BPM], dec[BPM];
     int *calendar_data[] = { jan, feb, mar, apr,
                              mai, jun, jul, aug,
                              sep, oct, nov, dec  };
-    get_days(calendar_data, year, inityear, first_days_inityear);
-
-    /* Define path to notes file                                              */
-    char *abspath_to_notes_file = (char *)malloc(len_of_path+9+1);
-    strcpy(abspath_to_notes_file, abspath_to_datd);
-    strcat(abspath_to_notes_file, "notes.txt");
 
     /* Determine current year and which button represents today               */
     int calendar_today_button_index, calendar_today_year, shift = 0;
@@ -111,9 +105,26 @@ static void activate(GtkApplication *calendar, gpointer data) {
         calendar_today_year = today->tm_year+1900;
         calendar_today_button_index
             = (today->tm_mon-1)*(int)BPM+today->tm_mday-1;
+
+        /* Compute which day corresponds to which weekday for current year    */
+        get_days(calendar_data,
+                 calendar_today_year,
+                 inityear,
+                 first_days_inityear);
+
+        /* Obtain day button to mark                                          */
         while (!calendar_data[today->tm_mon-1][shift++])
             calendar_today_button_index++;
     }
+
+    /* Compute which day corresponds to which weekday for *year*              */
+    if ( calendar_today_button_policy && (year != calendar_today_year) )
+        get_days(calendar_data, year, inityear, first_days_inityear);
+
+    /* Define path to notes file                                              */
+    char *abspath_to_notes_file = (char *)malloc(len_of_path+9+1);
+    strcpy(abspath_to_notes_file, abspath_to_datd);
+    strcat(abspath_to_notes_file, "notes.txt");
     /* ---------------------------------------------------------------------- */
 
     /* --- Define widgets, initialize, set properties and load CSS ---------- */
