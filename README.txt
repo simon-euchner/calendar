@@ -38,7 +38,7 @@ Contents.
     inc.d     : Include directory where C headers are stored
     obj.d     : Directory holding object code generated during compilation.
     bin.d     : Directory where the main executable named *calendar* is saved.
-    txt.d     : Directory saving notes written by the user in form of text
+    dat.d     : Directory saving notes written by the user in form of text
                 files.
     year.txt  : File where last viewed year is saved. Default year at startup of
                 *calendar* is this particular year.
